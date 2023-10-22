@@ -1,3 +1,4 @@
+import Classe.Facture;
 import OVESP.*;
 
 import javax.swing.*;
@@ -11,6 +12,7 @@ import java.net.Socket;
 
 import java.awt.event.WindowAdapter;
 import java.awt.event.WindowEvent;
+import java.util.List;
 
 import static java.lang.System.exit;
 
@@ -36,16 +38,23 @@ public class ClientPaiement extends JFrame {
         System.out.println("dialog");
         JOptionPane.showMessageDialog(this, message);
     }
+    public static void afficherFactures(List<Facture> factures) {
+        for (Facture facture : factures) {
+            System.out.println("ID : " + facture.getId());
+            System.out.println("ID du client : " + facture.getIdClient());
+            System.out.println("Date : " + facture.getDate());
+            System.out.println("Montant : " + facture.getMontant());
+            System.out.println("Payée : " + facture.isPaye());
+            System.out.println();
+        }
+    }
+
     public ClientPaiement(){
         DefaultTableModel model = new DefaultTableModel();
         model.addColumn("Articles");
         model.addColumn("Quantité");
 
         table1.setModel(model);
-
-        for (int i = 0; i < 10; i++) {
-            model.addRow(new Object[] {"", ""});
-        }
         loginButton.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
                 String ipServeur = "0.0.0.0";
@@ -120,7 +129,7 @@ public class ClientPaiement extends JFrame {
 
             }
         });
-        numClient.addActionListener(new ActionListener() {
+        rechercherButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
                 String idCli = numClient.getText();
@@ -128,27 +137,25 @@ public class ClientPaiement extends JFrame {
 
                 try {
                     oos.writeObject(requete);
+                    System.out.println("est passé dans le facture requete "+requete);
+                    ReponseFacture reponse  = (ReponseFacture) ois.readObject();
+                    System.out.println("est passé dans le facture après lecture");
+                reponse.getFacture();
                 } catch (IOException ex) {
                     throw new RuntimeException(ex);
-                }
-                System.out.println("est passé dans le facture requete "+requete);
-                ReponseFacture reponse = null;
-                try {
-                    reponse = (ReponseFacture) ois.readObject();
-                } catch (IOException ex) {
-                    throw new RuntimeException(ex);
-                } catch (ClassNotFoundException ex) {
+                }catch (ClassNotFoundException ex) {
                     throw new RuntimeException(ex);
                 }
-                System.out.println("est passé dans le facture après lecture");
-                if (reponse.isValide())
-                {
-                    loginButton.setEnabled(false);
-                    logoutButton.setEnabled(true);
-                    dialogueMessage("connecté");
-                    // jButtonCalcul.setEnabled(true);
-                    // this.login = login;
-                }
+                ;
+//                if (reponse.getFacture())
+//                {
+//                    //TODO mettre les factires dans la JTable
+//                    dialogueMessage("connecté");
+//                    // jButtonCalcul.setEnabled(true);
+//                    // this.login = login;
+//                }
+                //afficherFactures(reponse.getFacture());
+
 
             }
         });

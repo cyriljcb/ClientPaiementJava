@@ -4,29 +4,12 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="e3cb2a94-a499-4cdc-a26e-72dbbe563d21" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/modules.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/uiDesigner.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/ClientPaiement.iml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/ClientPaiement.form" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/ClientPaiement.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/Main.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/OVESP/FinConnexionException.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/OVESP/Logger.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/OVESP/OVESP.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/OVESP/Protocole.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/OVESP/Reponse.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/OVESP/ReponseFacture.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/OVESP/ReponseLogin.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/OVESP/RequetClientId.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/OVESP/Requete.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/OVESP/RequeteFacture.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/OVESP/RequeteLOGOUT.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/OVESP/RequeteLogin.java" afterDir="false" />
+    <list default="true" id="e3cb2a94-a499-4cdc-a26e-72dbbe563d21" name="Changes" comment="Jtable degueu">
+      <change afterPath="$PROJECT_DIR$/src/Classe/Facture.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/ClientPaiement.form" beforeDir="false" afterPath="$PROJECT_DIR$/src/ClientPaiement.form" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/ClientPaiement.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/ClientPaiement.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/OVESP/ReponseFacture.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/OVESP/ReponseFacture.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -37,6 +20,7 @@
     <option name="RECENT_TEMPLATES">
       <list>
         <option value="Class" />
+        <option value="Interface" />
       </list>
     </option>
   </component>
@@ -49,27 +33,28 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent">{
-  &quot;keyToString&quot;: {
-    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
-    &quot;SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;,
-    &quot;UI_DESIGNER_EDITOR_MODE.PaletteManager.SHOW&quot;: &quot;false&quot;,
-    &quot;UI_DESIGNER_EDITOR_MODE.UIDesignerToolWindowManager.SHOW&quot;: &quot;true&quot;,
-    &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
-    &quot;dart.analysis.tool.window.visible&quot;: &quot;false&quot;,
-    &quot;last_opened_file_path&quot;: &quot;C:/Users/ateli/OneDrive/Documents/cours_superieur/B3/RTI/labo/Client Achat java&quot;,
-    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
-    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
-    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
-    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
-    &quot;settings.editor.selected.configurable&quot;: &quot;preferences.general&quot;,
-    &quot;show.migrate.to.gradle.popup&quot;: &quot;false&quot;,
-    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "RunOnceActivity.OpenProjectViewOnStart": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "SHARE_PROJECT_CONFIGURATION_FILES": "true",
+    "UI_DESIGNER_EDITOR_MODE.PaletteManager.SHOW": "true",
+    "UI_DESIGNER_EDITOR_MODE.UIDesignerToolWindowManager.SHOW": "true",
+    "WebServerToolWindowFactoryState": "false",
+    "dart.analysis.tool.window.visible": "false",
+    "last_opened_file_path": "C:/Users/ateli/OneDrive/Documents/cours_superieur/B3/RTI/labo/partie paiement/ClientPaiement/src",
+    "node.js.detected.package.eslint": "true",
+    "node.js.detected.package.tslint": "true",
+    "node.js.selected.package.eslint": "(autodetect)",
+    "node.js.selected.package.tslint": "(autodetect)",
+    "settings.editor.selected.configurable": "preferences.general",
+    "show.migrate.to.gradle.popup": "false",
+    "vue.rearranger.settings.migration": "true"
   }
-}</component>
+}]]></component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\Users\ateli\OneDrive\Documents\cours_superieur\B3\RTI\labo\partie paiement\ClientPaiement\src" />
       <recent name="C:\Users\ateli\OneDrive\Documents\cours supérieur\B3\RTI\labo\partie paiement\ClientPaiement\src" />
     </key>
     <key name="CopyClassDialog.RECENTS_KEY">
@@ -94,11 +79,25 @@
       <workItem from="1697806827681" duration="1702000" />
       <workItem from="1697891129403" duration="1803000" />
       <workItem from="1697893236262" duration="257000" />
-      <workItem from="1697894282040" duration="1460000" />
+      <workItem from="1697894282040" duration="2694000" />
+      <workItem from="1697911412004" duration="4021000" />
     </task>
+    <task id="LOCAL-00001" summary="Jtable degueu">
+      <option name="closed" value="true" />
+      <created>1697895841778</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1697895841778</updated>
+    </task>
+    <option name="localTasksCounter" value="2" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="3" />
+  </component>
+  <component name="VcsManagerConfiguration">
+    <MESSAGE value="Jtable degueu" />
+    <option name="LAST_COMMIT_MESSAGE" value="Jtable degueu" />
   </component>
 </project>

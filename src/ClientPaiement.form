@@ -154,18 +154,16 @@
                   <text value="nom du propriétaire de la carte : "/>
                 </properties>
               </component>
-              <scrollpane id="1748">
+              <scrollpane id="44420">
                 <constraints>
-                  <grid row="2" column="0" row-span="2" col-span="4" vsize-policy="7" hsize-policy="7" anchor="0" fill="3" indent="0" use-parent-layout="false"/>
+                  <grid row="2" column="0" row-span="2" col-span="3" vsize-policy="7" hsize-policy="7" anchor="0" fill="3" indent="0" use-parent-layout="false"/>
                 </constraints>
                 <properties/>
                 <border type="none"/>
                 <children>
-                  <component id="cfa0f" class="javax.swing.JTable" binding="table1" default-binding="true">
+                  <component id="4491d" class="javax.swing.JTable" binding="table1" default-binding="true">
                     <constraints/>
-                    <properties>
-                      <autoCreateRowSorter value="false"/>
-                    </properties>
+                    <properties/>
                   </component>
                 </children>
               </scrollpane>

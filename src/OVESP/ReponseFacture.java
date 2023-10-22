@@ -1,12 +1,27 @@
 package OVESP;
 
-public class ReponseFacture implements Reponse{
-    private boolean valide;
+import Classe.Facture;
 
-    ReponseFacture(boolean v) {
-        valide = v;
+import java.util.List;
+
+public class ReponseFacture implements Reponse{
+    private List<Facture> facturelist;
+    public static void afficherFactures(List<Facture> factures) {
+        for (Facture facture : factures) {
+            System.out.println("ID : " + facture.getId());
+            System.out.println("ID du client : " + facture.getIdClient());
+            System.out.println("Date : " + facture.getDate());
+            System.out.println("Montant : " + facture.getMontant());
+            System.out.println("Payée : " + facture.isPaye());
+            System.out.println();
+        }
     }
-    public boolean isValide() {
-        return valide;
+
+    ReponseFacture(List<Facture> facture) {
+        facturelist = facture;
+    }
+    public List<Facture> getFacture() {
+        afficherFactures(facturelist);
+        return facturelist;
     }
 }
