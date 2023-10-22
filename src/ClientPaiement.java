@@ -51,8 +51,9 @@ public class ClientPaiement extends JFrame {
 
     public ClientPaiement(){
         DefaultTableModel model = new DefaultTableModel();
-        model.addColumn("Articles");
-        model.addColumn("Quantité");
+        model.addColumn("date");
+        model.addColumn("montant");
+        model.addColumn("payé");
 
         table1.setModel(model);
         loginButton.addActionListener(new ActionListener() {
@@ -133,14 +134,22 @@ public class ClientPaiement extends JFrame {
             @Override
             public void actionPerformed(ActionEvent e) {
                 String idCli = numClient.getText();
+                System.out.println(idCli);
                 RequeteFacture requete = new RequeteFacture(idCli);
-
+                model.setRowCount(0);
                 try {
                     oos.writeObject(requete);
                     System.out.println("est passé dans le facture requete "+requete);
                     ReponseFacture reponse  = (ReponseFacture) ois.readObject();
                     System.out.println("est passé dans le facture après lecture");
-                reponse.getFacture();
+                    for (Facture facture : reponse.getFacture()) {
+                        Object[] rowData = {facture.getDate(), facture.getMontant(), facture.isPaye()};
+                        model.addRow(rowData);
+                    }
+
+
+
+                    //afficherFactures(reponse.getFacture());
                 } catch (IOException ex) {
                     throw new RuntimeException(ex);
                 }catch (ClassNotFoundException ex) {
@@ -154,7 +163,7 @@ public class ClientPaiement extends JFrame {
 //                    // jButtonCalcul.setEnabled(true);
 //                    // this.login = login;
 //                }
-                //afficherFactures(reponse.getFacture());
+
 
 
             }
