@@ -149,7 +149,6 @@ public class ClientPaiement extends JFrame {
                         Object[] rowData = {facture.getId(),facture.getDate(), facture.getMontant(), facture.isPaye()};
                         model.addRow(rowData);
                     }
-
                     //afficherFactures(reponse.getFacture());
                 } catch (IOException ex) {
                     throw new RuntimeException(ex);
@@ -158,7 +157,47 @@ public class ClientPaiement extends JFrame {
                 }
             }
         });
+        payerButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                int Row = table1.getSelectedRow();
+                if (Row != -1) {
+                    DefaultTableModel model = (DefaultTableModel) table1.getModel();
+                    int columnCount = model.getColumnCount();
 
+                    String info = model.getValueAt(Row,0).toString();
+                    System.out.println("idFacture  : "+info);
+                    RequetePayeFacture requete = new RequetePayeFacture(info,numClient.getText(),nomVisa.getText(),NumVisa.getText());
+                    try {
+                        oos.writeObject(requete);
+                        ReponsePayeFacture reponse1  = (ReponsePayeFacture) ois.readObject();
+                        System.out.println("est passé dans le Payefacture requete "+requete);
+                        if(reponse1.getPaye())
+                        {
+
+                            model.setRowCount(0);
+                            RequeteFacture requete1 = new RequeteFacture(numClient.getText());
+                            oos.writeObject(requete1);
+                            ReponseFacture reponse  = (ReponseFacture) ois.readObject();
+                            System.out.println("est passé dans le Payefacture après lecture");
+                            for (Facture facture : reponse.getFacture()) {
+                                Object[] rowData = {facture.getId(),facture.getDate(), facture.getMontant(), facture.isPaye()};
+                                model.addRow(rowData);
+                            }
+                            dialogueMessage("Facture payée");
+                        }
+                        else
+                            dialogueMessage("Probleme lors du paiement de la facture");
+
+                        //afficherFactures(reponse.getFacture());
+                    } catch (IOException ex) {
+                        throw new RuntimeException(ex);
+                    }catch (ClassNotFoundException ex) {
+                        throw new RuntimeException(ex);
+                    }
+                }
+            }
+        });
     }
     public static void main(String[] args) {
 
