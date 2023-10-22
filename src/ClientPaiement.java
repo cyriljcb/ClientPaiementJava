@@ -5,6 +5,7 @@ import javax.swing.*;
 import javax.swing.table.DefaultTableModel;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.io.FileInputStream;
 import java.io.IOException;
 import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
@@ -13,6 +14,7 @@ import java.net.Socket;
 import java.awt.event.WindowAdapter;
 import java.awt.event.WindowEvent;
 import java.util.List;
+import java.util.Properties;
 
 import static java.lang.System.exit;
 
@@ -59,12 +61,32 @@ public class ClientPaiement extends JFrame {
         table1.setModel(model);
         table1.setAutoResizeMode(JTable.AUTO_RESIZE_ALL_COLUMNS);
 
+
+
         loginButton.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
-                String ipServeur = "0.0.0.0";
-                int portServeur = 51000;
+                Properties properties = new Properties();
+                FileInputStream input = null;
+                int port = 0;
+                String ipServeur;
                 try {
-                    socket = new Socket(ipServeur,portServeur);
+                    input = new FileInputStream("src\\config.properties");
+                    properties.load(input);
+                    port = Integer.parseInt(properties.getProperty("PORT_PAIEMENT"));
+                    ipServeur = properties.getProperty(("IP_SERVEUR"));
+                } catch (IOException exc) {
+                    throw new RuntimeException(exc);
+                } finally {
+                    if (input != null) {
+                        try {
+                            input.close();
+                        } catch (IOException ex) {
+                            dialogueMessage("erreur de lecture dans le fichier de conf");
+                        }
+                    }
+                }
+                try {
+                    socket = new Socket(ipServeur,port);
                 } catch (IOException ex) {
                     throw new RuntimeException(ex);
                 }
