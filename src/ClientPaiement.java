@@ -51,15 +51,18 @@ public class ClientPaiement extends JFrame {
 
     public ClientPaiement(){
         DefaultTableModel model = new DefaultTableModel();
+        model.addColumn("idFacture");
         model.addColumn("date");
         model.addColumn("montant");
         model.addColumn("payé");
 
         table1.setModel(model);
+        table1.setAutoResizeMode(JTable.AUTO_RESIZE_ALL_COLUMNS);
+
         loginButton.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
                 String ipServeur = "0.0.0.0";
-                int portServeur = 50000;
+                int portServeur = 51000;
                 try {
                     socket = new Socket(ipServeur,portServeur);
                 } catch (IOException ex) {
@@ -143,11 +146,9 @@ public class ClientPaiement extends JFrame {
                     ReponseFacture reponse  = (ReponseFacture) ois.readObject();
                     System.out.println("est passé dans le facture après lecture");
                     for (Facture facture : reponse.getFacture()) {
-                        Object[] rowData = {facture.getDate(), facture.getMontant(), facture.isPaye()};
+                        Object[] rowData = {facture.getId(),facture.getDate(), facture.getMontant(), facture.isPaye()};
                         model.addRow(rowData);
                     }
-
-
 
                     //afficherFactures(reponse.getFacture());
                 } catch (IOException ex) {
@@ -155,19 +156,9 @@ public class ClientPaiement extends JFrame {
                 }catch (ClassNotFoundException ex) {
                     throw new RuntimeException(ex);
                 }
-                ;
-//                if (reponse.getFacture())
-//                {
-//                    //TODO mettre les factires dans la JTable
-//                    dialogueMessage("connecté");
-//                    // jButtonCalcul.setEnabled(true);
-//                    // this.login = login;
-//                }
-
-
-
             }
         });
+
     }
     public static void main(String[] args) {
 
@@ -177,7 +168,7 @@ public class ClientPaiement extends JFrame {
             ClientPaiement app = null;
             app = new ClientPaiement();
 
-            frame.setSize(1000, 400);
+            frame.setSize(850, 250);  //onpeut mettre un listener
             //Nous demandons maintenant à notre objet de se positionner au centre
             frame.setLocationRelativeTo(null);
             frame.add(app.panel1);

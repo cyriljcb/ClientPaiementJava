@@ -4,8 +4,9 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="e3cb2a94-a499-4cdc-a26e-72dbbe563d21" name="Changes" comment="probleme serializable facture">
+    <list default="true" id="e3cb2a94-a499-4cdc-a26e-72dbbe563d21" name="Changes" comment="Jtable complétée">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/ClientPaiement.form" beforeDir="false" afterPath="$PROJECT_DIR$/src/ClientPaiement.form" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/ClientPaiement.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/ClientPaiement.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -39,7 +40,7 @@
     "UI_DESIGNER_EDITOR_MODE.UIDesignerToolWindowManager.SHOW": "true",
     "WebServerToolWindowFactoryState": "false",
     "dart.analysis.tool.window.visible": "false",
-    "last_opened_file_path": "C:/Users/ateli/OneDrive/Documents/cours_superieur/B3/RTI/labo/ClientAchatJava",
+    "last_opened_file_path": "C:/Users/ateli/OneDrive/Documents/cours_superieur/B3/RTI/labo/partie paiement/ServeurPaiement",
     "node.js.detected.package.eslint": "true",
     "node.js.detected.package.tslint": "true",
     "node.js.selected.package.eslint": "(autodetect)",
@@ -78,7 +79,8 @@
       <workItem from="1697893236262" duration="257000" />
       <workItem from="1697894282040" duration="2694000" />
       <workItem from="1697911412004" duration="4021000" />
-      <workItem from="1697961608189" duration="3002000" />
+      <workItem from="1697961608189" duration="3240000" />
+      <workItem from="1697973709330" duration="2535000" />
     </task>
     <task id="LOCAL-00001" summary="Jtable degueu">
       <option name="closed" value="true" />
@@ -96,7 +98,15 @@
       <option name="project" value="LOCAL" />
       <updated>1697961682219</updated>
     </task>
-    <option name="localTasksCounter" value="3" />
+    <task id="LOCAL-00003" summary="Jtable complétée">
+      <option name="closed" value="true" />
+      <created>1697965010543</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1697965010543</updated>
+    </task>
+    <option name="localTasksCounter" value="4" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -105,6 +115,7 @@
   <component name="VcsManagerConfiguration">
     <MESSAGE value="Jtable degueu" />
     <MESSAGE value="probleme serializable facture" />
-    <option name="LAST_COMMIT_MESSAGE" value="probleme serializable facture" />
+    <MESSAGE value="Jtable complétée" />
+    <option name="LAST_COMMIT_MESSAGE" value="Jtable complétée" />
   </component>
 </project>
