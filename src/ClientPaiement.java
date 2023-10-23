@@ -70,7 +70,7 @@ public class ClientPaiement extends JFrame {
                 int port = 0;
                 String ipServeur;
                 try {
-                    input = new FileInputStream("src\\config.properties");
+                    input = new FileInputStream("C:\\Users\\ateli\\OneDrive\\Documents\\cours_superieur\\B3\\RTI\\labo\\partie paiement\\ClientPaiement\\src\\config.properties");
                     properties.load(input);
                     port = Integer.parseInt(properties.getProperty("PORT_PAIEMENT"));
                     ipServeur = properties.getProperty(("IP_SERVEUR"));
