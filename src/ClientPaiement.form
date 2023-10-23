@@ -105,7 +105,7 @@
                 <properties/>
                 <border type="none"/>
                 <children>
-                  <component id="4491d" class="javax.swing.JTable" binding="table1" default-binding="true">
+                  <component id="4491d" class="javax.swing.JTable" binding="table1">
                     <constraints/>
                     <properties>
                       <autoResizeMode value="4"/>

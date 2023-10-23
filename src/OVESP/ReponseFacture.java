@@ -19,9 +19,10 @@ public class ReponseFacture implements Reponse{
 
     ReponseFacture(List<Facture> facture) {
         facturelist = facture;
+        System.out.println("allo");
+        afficherFactures(facturelist);
     }
     public List<Facture> getFacture() {
-        afficherFactures(facturelist);
         return facturelist;
     }
 }
