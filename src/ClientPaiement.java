@@ -33,16 +33,14 @@ public class ClientPaiement extends JFrame implements KeyListener {
     private JFormattedTextField NumVisa;
     private JButton payerButton;
     private JButton creerButton;
-
     private Socket socket;
-
     private String login;
-
     private ObjectOutputStream oos;
     private ObjectInputStream ois;
     private boolean isInterfaceOpen = false;
     InterfaceCaddie interfaceCaddie = new InterfaceCaddie();
     private boolean isInitialized = false;
+
     private void initializeObjectStreams() {
         if (!isInitialized) {
             Properties properties = new Properties();
@@ -75,34 +73,30 @@ public class ClientPaiement extends JFrame implements KeyListener {
             }
         }
     }
+
     @Override
     public void keyPressed(KeyEvent e) {
         int key = e.getKeyCode();
         System.out.println("touche : " + key);
         if (key == KeyEvent.VK_MINUS) {  // Touche "-"
-//            initializeObjectStreams();
-//            System.out.println("Touche '-' appuyée.");
-//
-//
             creerButton.setVisible(true);
         }
     }
+
     @Override
     public void keyTyped(KeyEvent e) {
         // Ne rien faire (corps vide) ou lancer une exception non prise en charge
-
     }
 
     @Override
     public void keyReleased(KeyEvent e) {
         // Code à exécuter lorsque qu'une touche est relâchée
     }
-
-
     public void dialogueMessage(String message) {
         System.out.println("dialog");
         JOptionPane.showMessageDialog(this, message);
     }
+
     public ClientPaiement() {
         creerButton.setVisible(false);
         DefaultTableModel model = new DefaultTableModel() {
@@ -131,31 +125,34 @@ public class ClientPaiement extends JFrame implements KeyListener {
                 initializeObjectStreams();
                 String login1 = jTextFieldLogin.getText();
                 String password = jTextFieldPassword.getText();
-                System.out.println("login " + login1 + " mdp " + password);
-                try {
+                if (login1.equals("") || password.equals("")) {
+                    dialogueMessage("veuillez compléter correctement les champs");
+                } else if (!login1.matches("^[a-zA-Z0-9]*$")||!password.matches("^[a-zA-Z0-9]*$")) {
+                    dialogueMessage("rah ouais, t'essaies quoi la?");
+                } else {
+                    try {
 
-                    RequeteLogin requete = new RequeteLogin(login1, password,false);
+                        RequeteLogin requete = new RequeteLogin(login1, password, false);
+                        oos.writeObject(requete);
+                        System.out.println("est passé dans le login requete" + requete);
+                        ReponseLogin reponse = (ReponseLogin) ois.readObject();
+                        System.out.println("est passé dans le login après lecture");
+                        if (reponse.isValide()) {
+                            login= jTextFieldLogin.getText();
+                            loginButton.setEnabled(false);
+                            logoutButton.setEnabled(true);
+                            rechercherButton.setEnabled(true);
 
-                    oos.writeObject(requete);
-                    System.out.println("est passé dans le login requete" + requete);
-                    ReponseLogin reponse = (ReponseLogin) ois.readObject();
-                    System.out.println("est passé dans le login après lecture");
-                    if (reponse.isValide()) {
-                        loginButton.setEnabled(false);
-                        logoutButton.setEnabled(true);
-                        rechercherButton.setEnabled(true);
+                            dialogueMessage("connecté");
+                        } else {
+                            dialogueMessage("probleme lors de la tentative de connection");
+                            socket.close();
 
-                        dialogueMessage("connecté");
-                    } else {
-                       dialogueMessage("probleme lors de la tentative de connection");
-                        socket.close();
-
+                        }
+                    } catch (IOException | ClassNotFoundException ex) {
+                        dialogueMessage("probleme lors du login");
                     }
-                } catch (IOException | ClassNotFoundException ex) {
-                    //JOptionPane.showMessageDialog(this,"Problème de connexion!","Erreur...",JOptionPane.ERROR_MESSAGE);
                 }
-
-
             }
         });
         logoutButton.addActionListener(new ActionListener() {
@@ -163,7 +160,6 @@ public class ClientPaiement extends JFrame implements KeyListener {
             public void actionPerformed(ActionEvent e) {
                 RequeteLOGOUT requete = new RequeteLOGOUT(login);
                 try {
-
                     System.out.println("la requete de logout :" + requete);
                     oos.writeObject(requete);
                     socket.close();
@@ -173,7 +169,7 @@ public class ClientPaiement extends JFrame implements KeyListener {
                 } catch (IOException ex) {
                     throw new RuntimeException(ex);
                 }
-                isInitialized=false;
+                isInitialized = false;
                 loginButton.setEnabled(true);
                 logoutButton.setEnabled(false);
                 rechercherButton.setEnabled(false);
@@ -182,32 +178,33 @@ public class ClientPaiement extends JFrame implements KeyListener {
                 jTextFieldPassword.setText("");
                 numClient.setText("");
                 model.setRowCount(0);
-
-
             }
         });
         rechercherButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
                 String idCli = numClient.getText();
-                System.out.println(idCli);
-                RequeteFacture requete = new RequeteFacture(idCli);
-                model.setRowCount(0);
-                try {
-                    oos.writeObject(requete);
-                    System.out.println("est passé dans le facture requete " + requete);
-                    ReponseFacture reponse = (ReponseFacture) ois.readObject();
-                    System.out.println("est passé dans le facture après lecture");
-                    for (Facture facture : reponse.getFacture()) {
-                        Object[] rowData = {facture.getId(), facture.getDate(), facture.getMontant(), facture.isPaye()};
-                        model.addRow(rowData);
+                if(idCli.matches("\\d+"))    //pour les chiffres
+                {
+                    RequeteFacture requete = new RequeteFacture(idCli);
+                    model.setRowCount(0);
+                    try {
+                        oos.writeObject(requete);
+                        ReponseFacture reponse = (ReponseFacture) ois.readObject();
+                        for (Facture facture : reponse.getFacture()) {
+                            Object[] rowData = {facture.getId(), facture.getDate(), facture.getMontant(), facture.isPaye()};
+                            model.addRow(rowData);
+                        }
+                        //afficherFactures(reponse.getFacture());
+                    } catch (IOException ex) {
+                        throw new RuntimeException(ex);
+                    } catch (ClassNotFoundException ex) {
+                        throw new RuntimeException(ex);
                     }
-                    //afficherFactures(reponse.getFacture());
-                } catch (IOException ex) {
-                    throw new RuntimeException(ex);
-                } catch (ClassNotFoundException ex) {
-                    throw new RuntimeException(ex);
                 }
+                else
+                    dialogueMessage("veuillez entrer un id de facture valide");
+
             }
         });
         payerButton.addActionListener(new ActionListener() {
@@ -216,17 +213,12 @@ public class ClientPaiement extends JFrame implements KeyListener {
                 int Row = table1.getSelectedRow();
                 if (Row != -1) {
                     DefaultTableModel model = (DefaultTableModel) table1.getModel();
-                    int columnCount = model.getColumnCount();
-
                     String info = model.getValueAt(Row, 0).toString();
-                    System.out.println("idFacture  : " + info);
                     RequetePayeFacture requete = new RequetePayeFacture(info, numClient.getText(), nomVisa.getText(), NumVisa.getText());
                     try {
                         oos.writeObject(requete);
                         ReponsePayeFacture reponse1 = (ReponsePayeFacture) ois.readObject();
-                        System.out.println("est passé dans le Payefacture requete " + requete);
                         if (reponse1.getPaye()) {
-
                             model.setRowCount(0);
                             RequeteFacture requete1 = new RequeteFacture(numClient.getText());
                             oos.writeObject(requete1);
@@ -237,8 +229,7 @@ public class ClientPaiement extends JFrame implements KeyListener {
                                 model.addRow(rowData);
                             }
                             dialogueMessage("Facture payée");
-                        } else
-                            dialogueMessage("Probleme lors du paiement de la facture");
+                        } else dialogueMessage("Probleme lors du paiement de la facture");
                     } catch (IOException ex) {
                         throw new RuntimeException(ex);
                     } catch (ClassNotFoundException ex) {
@@ -265,7 +256,7 @@ public class ClientPaiement extends JFrame implements KeyListener {
                         interfaceCaddie.updateCaddie(reponse1.getCaddieList());
 
                         if (!isInterfaceOpen) {
-                           interfaceCaddie.setVisible(true);
+                            interfaceCaddie.setVisible(true);
                             isInterfaceOpen = true;
                         }
                     } catch (IOException ex) {
@@ -276,38 +267,40 @@ public class ClientPaiement extends JFrame implements KeyListener {
                 }
             }
         });
-
-
         creerButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
                 try {
                     initializeObjectStreams();
-                    System.out.println("login : "+jTextFieldLogin.getText()+" mdp : "+jTextFieldPassword.getText());
-                    RequeteLogin requete = new RequeteLogin(jTextFieldLogin.getText(), jTextFieldPassword.getText(), true);
 
-                    oos.writeObject(requete);
-                    System.out.println("est passé dans le login requete" + requete);
-                    ReponseLogin reponse = (ReponseLogin) ois.readObject();
-                    System.out.println("est passé dans le login après lecture");
-                    if (reponse.isValide()) {
-                        loginButton.setEnabled(false);
-                        logoutButton.setEnabled(true);
-                        dialogueMessage("connecté");
-                        // jButtonCalcul.setEnabled(true);
-                        // this.login = login;
+                    String login1 = jTextFieldLogin.getText();
+                    String password = jTextFieldPassword.getText();
+                    if (login1.equals("") || password.equals("")) {
+                        dialogueMessage("veuillez compléter correctement les champs");
+                    } else if (!login1.matches("^[a-zA-Z0-9]*$")||!password.matches("^[a-zA-Z0-9]*$")) {
+                        dialogueMessage("rah ouais, t'essaies quoi la?");
                     } else {
-                        //JOptionPane.showMessageDialog(this,"Erreur de login!","Erreur...",JOptionPane.ERROR_MESSAGE);
-                        socket.close();
 
+                        RequeteLogin requete = new RequeteLogin(login1, password, false);
+                        oos.writeObject(requete);
+                        System.out.println("est passé dans le login requete" + requete);
+                        ReponseLogin reponse = (ReponseLogin) ois.readObject();
+                        System.out.println("est passé dans le login après lecture");
+                        if (reponse.isValide()) {
+                            loginButton.setEnabled(false);
+                            logoutButton.setEnabled(true);
+                            dialogueMessage("connecté");
+                        } else {
+                            socket.close();
+
+                        }
                     }
                 } catch (IOException | ClassNotFoundException ex) {
-                    //JOptionPane.showMessageDialog(this,"Problème de connexion!","Erreur...",JOptionPane.ERROR_MESSAGE);
+                    dialogueMessage("erreur lors de l'envoi/réception de la requete");
                 }
             }
         });
     }
-
     public static void main(String[] args) {
         SwingUtilities.invokeLater(() -> {
             ClientPaiement app = new ClientPaiement();
@@ -316,12 +309,9 @@ public class ClientPaiement extends JFrame implements KeyListener {
             frame.add(app.panel1);
             frame.setSize(850, 250);
             frame.setLocationRelativeTo(null);
-
-            // Ajoutez ces lignes pour activer le focus clavier
             frame.addKeyListener(app);
             frame.setFocusable(true);
             frame.requestFocusInWindow();
-
             frame.setVisible(true);
         });
     }
