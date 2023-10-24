@@ -1,4 +1,5 @@
 import Classe.Caddie;
+import Classe.ColumnWidthAdjuster;
 import Classe.RendererImage;
 import Classe.RowHeightAdjuster;
 
@@ -15,34 +16,37 @@ public class InterfaceCaddie extends JPanel {
 
     public InterfaceCaddie() {
 
+
         model = new DefaultTableModel();
+        model.addColumn("image");
         model.addColumn("intitulé");
         model.addColumn("quantité");
-        model.addColumn("image");
 
         table1 = new JTable(model);
-        table1.setAutoResizeMode(JTable.AUTO_RESIZE_ALL_COLUMNS);
+        table1.setAutoResizeMode(JTable.AUTO_RESIZE_OFF);
 
-        table1.getColumnModel().getColumn(2).setCellRenderer(new RendererImage());
+        table1.getColumnModel().getColumn(0).setCellRenderer(new RendererImage());
 
         caddieFrame = new JFrame("Caddie");
         caddieFrame.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
-        caddieFrame.setSize(400, 300);
+        caddieFrame.setSize(500, 200);
         caddieFrame.add(new JScrollPane(table1));
         caddieFrame.pack();
+
+        // Ajustz la largeur de chaque colonne
+        ColumnWidthAdjuster.adjustColumnWidth(table1, 0, 200);
+        ColumnWidthAdjuster.adjustColumnWidth(table1, 1, 150);
+        ColumnWidthAdjuster.adjustColumnWidth(table1, 2, 100);
 
         RowHeightAdjuster.adjustRowHeight(table1, 200);
         Font customFont = new Font("Arial", Font.PLAIN, 28);
 
         table1.setFont(customFont);
-        Font columnHeaderFont = new Font("Arial", Font.BOLD, 18);  // Ajustez la police, le style et la taille ici
-
-        // Obtenez l'en-tête de la JTable
+        Font columnHeaderFont = new Font("Arial", Font.BOLD, 18);
         JTableHeader tableHeader = table1.getTableHeader();
-
-        // Appliquez la police personnalisée aux noms de colonnes
         tableHeader.setFont(columnHeaderFont);
     }
+
 
     // Méthode pour mettre à jour les données de la JTable
     public void updateCaddie(List<Caddie> caddies) {
@@ -52,7 +56,7 @@ public class InterfaceCaddie extends JPanel {
         // Ajoutez les nouvelles données
         for (Caddie caddie : caddies) {
             String imagePath = "src\\images\\" + caddie.getImage();
-            Object[] rowData = {caddie.getIntitule(), caddie.getQuantite(), imagePath};
+            Object[] rowData = {imagePath, caddie.getIntitule(), caddie.getQuantite()};  // Assurez-vous que la première colonne correspond à "image"
             model.addRow(rowData);
         }
 
@@ -61,4 +65,3 @@ public class InterfaceCaddie extends JPanel {
         caddieFrame.setVisible(true);
     }
 }
-
