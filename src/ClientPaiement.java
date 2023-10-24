@@ -36,6 +36,8 @@ public class ClientPaiement extends JFrame {
     private ObjectOutputStream oos;
     private ObjectInputStream ois;
     private boolean isInterfaceOpen = false;
+    InterfaceCaddie interfaceCaddie = new InterfaceCaddie();
+
 
 
     public void dialogueMessage(String message) {
@@ -238,16 +240,13 @@ public class ClientPaiement extends JFrame {
                         ReponseCaddie reponse1 = (ReponseCaddie) ois.readObject();
 
                         System.out.println("Affichage des résultats : ");
+
+                        // Mettez à jour le contenu de l'interface existante
+                        interfaceCaddie.updateCaddie(reponse1.getCaddieList());
+
                         if (!isInterfaceOpen) {
-//                            JFrame frame2 = new JFrame("Caddie");
-//                            frame2.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
-//                            frame2.setSize(400, 300);
-
-                            InterfaceCaddie interfaceCaddie = new InterfaceCaddie(reponse1.getCaddieList());
-//                            frame2.add(interfaceCaddie);
-//                            frame2.setVisible(true);
-
-                            afficherCaddie(reponse1.getCaddieList());
+                            // Ouvrez l'interface graphique si ce n'est pas encore ouvert
+                            interfaceCaddie.setVisible(true);
                             isInterfaceOpen = true;
                         }
                     } catch (IOException ex) {

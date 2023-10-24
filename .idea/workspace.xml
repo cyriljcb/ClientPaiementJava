@@ -9,39 +9,12 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="e3cb2a94-a499-4cdc-a26e-72dbbe563d21" name="Changes" comment="Manque le bonus,l'interface du serveur, et blindage">
-      <change afterPath="$PROJECT_DIR$/src/Classe/Caddie.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/Classe/RendererImage.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/Classe/RowHeightAdjuster.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/InterfaceCaddie.form" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/InterfaceCaddie.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/OVESP/ReponseCaddie.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/OVESP/RequeteCaddie.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/images/ail.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/images/artichaut.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/images/aubergine.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/images/bananes.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/images/carottes.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/images/cerises.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/images/champignons.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/images/citrons.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/images/concombre.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/images/courgette.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/images/echalotes.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/images/haricots.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/images/laitue.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/images/nectarines.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/images/oignons.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/images/oranges.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/images/peches.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/images/poivron.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/images/pommes.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/images/pommesDeTerre.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/images/tomates.jpg" afterDir="false" />
+    <list default="true" id="e3cb2a94-a499-4cdc-a26e-72dbbe563d21" name="Changes" comment="bonus fait a moitié &#10;manque: l'interface du serveur,un logout correct et blindage">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/ClientPaiement.form" beforeDir="false" afterPath="$PROJECT_DIR$/src/ClientPaiement.form" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Classe/Caddie.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Classe/Caddie.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/ClientPaiement.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/ClientPaiement.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/OVESP/ReponseFacture.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/OVESP/ReponseFacture.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/InterfaceCaddie.form" beforeDir="false" afterPath="$PROJECT_DIR$/src/InterfaceCaddie.form" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/InterfaceCaddie.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/InterfaceCaddie.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -74,7 +47,7 @@
     "UI_DESIGNER_EDITOR_MODE.UIDesignerToolWindowManager.SHOW": "true",
     "WebServerToolWindowFactoryState": "false",
     "dart.analysis.tool.window.visible": "false",
-    "last_opened_file_path": "C:/Users/ateli/OneDrive/Documents/cours_superieur/B3/RTI/labo/partie paiement/ClientPaiement/src",
+    "last_opened_file_path": "C:/Users/ateli/OneDrive/Documents/cours_superieur/B3/RTI/labo/partie paiement/ServeurPaiement",
     "node.js.detected.package.eslint": "true",
     "node.js.detected.package.tslint": "true",
     "node.js.selected.package.eslint": "(autodetect)",
@@ -141,7 +114,8 @@
       <workItem from="1698070199602" duration="1021000" />
       <workItem from="1698074987663" duration="2275000" />
       <workItem from="1698096337910" duration="502000" />
-      <workItem from="1698096887724" duration="2013000" />
+      <workItem from="1698096887724" duration="2146000" />
+      <workItem from="1698137714983" duration="1915000" />
     </task>
     <task id="LOCAL-00001" summary="Jtable degueu">
       <option name="closed" value="true" />
@@ -199,7 +173,15 @@
       <option name="project" value="LOCAL" />
       <updated>1698065585732</updated>
     </task>
-    <option name="localTasksCounter" value="8" />
+    <task id="LOCAL-00008" summary="bonus fait a moitié &#10;manque: l'interface du serveur,un logout correct et blindage">
+      <option name="closed" value="true" />
+      <created>1698099007539</created>
+      <option name="number" value="00008" />
+      <option name="presentableId" value="LOCAL-00008" />
+      <option name="project" value="LOCAL" />
+      <updated>1698099007539</updated>
+    </task>
+    <option name="localTasksCounter" value="9" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -213,6 +195,7 @@
     <MESSAGE value="payer fait. Manque le bonus,fichier conf,l'interface du serveur et blindage" />
     <MESSAGE value="fichier conf fait. Manque le bonus,l'interface du serveur, la section critique sur le bean et blindage" />
     <MESSAGE value="Manque le bonus,l'interface du serveur, et blindage" />
-    <option name="LAST_COMMIT_MESSAGE" value="Manque le bonus,l'interface du serveur, et blindage" />
+    <MESSAGE value="bonus fait a moitié &#10;manque: l'interface du serveur,un logout correct et blindage" />
+    <option name="LAST_COMMIT_MESSAGE" value="bonus fait a moitié &#10;manque: l'interface du serveur,un logout correct et blindage" />
   </component>
 </project>
