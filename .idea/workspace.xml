@@ -10,9 +10,12 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="e3cb2a94-a499-4cdc-a26e-72dbbe563d21" name="Changes" comment="bonus fait avec image&#10;manque: l'interface du serveur,un logout correct et blindage">
-      <change afterPath="$PROJECT_DIR$/src/Classe/ColumnWidthAdjuster.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/Classe/Employe.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/InterfaceCaddie.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/InterfaceCaddie.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/ClientPaiement.form" beforeDir="false" afterPath="$PROJECT_DIR$/src/ClientPaiement.form" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/ClientPaiement.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/ClientPaiement.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/OVESP/ReponseFacture.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/OVESP/ReponseFacture.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/OVESP/RequeteLogin.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/OVESP/RequeteLogin.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -113,7 +116,7 @@
       <workItem from="1698074987663" duration="2275000" />
       <workItem from="1698096337910" duration="502000" />
       <workItem from="1698096887724" duration="2146000" />
-      <workItem from="1698137714983" duration="3221000" />
+      <workItem from="1698137714983" duration="11180000" />
     </task>
     <task id="LOCAL-00001" summary="Jtable degueu">
       <option name="closed" value="true" />
@@ -187,7 +190,15 @@
       <option name="project" value="LOCAL" />
       <updated>1698139952085</updated>
     </task>
-    <option name="localTasksCounter" value="10" />
+    <task id="LOCAL-00010" summary="bonus fait avec image&#10;manque: l'interface du serveur,un logout correct et blindage">
+      <option name="closed" value="true" />
+      <created>1698140957707</created>
+      <option name="number" value="00010" />
+      <option name="presentableId" value="LOCAL-00010" />
+      <option name="project" value="LOCAL" />
+      <updated>1698140957707</updated>
+    </task>
+    <option name="localTasksCounter" value="11" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">

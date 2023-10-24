@@ -1,4 +1,5 @@
 import Classe.Caddie;
+import Classe.Employe;
 import Classe.Facture;
 import OVESP.*;
 
@@ -8,6 +9,8 @@ import javax.swing.event.ListSelectionListener;
 import javax.swing.table.DefaultTableModel;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.awt.event.KeyEvent;
+import java.awt.event.KeyListener;
 import java.io.FileInputStream;
 import java.io.IOException;
 import java.io.ObjectInputStream;
@@ -17,7 +20,7 @@ import java.net.Socket;
 import java.util.List;
 import java.util.Properties;
 
-public class ClientPaiement extends JFrame {
+public class ClientPaiement extends JFrame implements KeyListener {
     private JPanel panel1;
     private JFormattedTextField jTextFieldLogin;
     private JFormattedTextField jTextFieldPassword;
@@ -29,6 +32,8 @@ public class ClientPaiement extends JFrame {
     private JButton rechercherButton;
     private JFormattedTextField NumVisa;
     private JButton payerButton;
+    private JButton creerButton;
+
     private Socket socket;
 
     private String login;
@@ -37,86 +42,99 @@ public class ClientPaiement extends JFrame {
     private ObjectInputStream ois;
     private boolean isInterfaceOpen = false;
     InterfaceCaddie interfaceCaddie = new InterfaceCaddie();
+    private boolean isInitialized = false;
+    private void initializeObjectStreams() {
+        if (!isInitialized) {
+            Properties properties = new Properties();
+            FileInputStream input = null;
+            int port = 0;
+            String ipServeur;
+            try {
+                input = new FileInputStream("C:\\Users\\ateli\\OneDrive\\Documents\\cours_superieur\\B3\\RTI\\labo\\partie paiement\\ClientPaiement\\src\\config.properties");
+                properties.load(input);
+                port = Integer.parseInt(properties.getProperty("PORT_PAIEMENT"));
+                ipServeur = properties.getProperty(("IP_SERVEUR"));
+            } catch (IOException exc) {
+                throw new RuntimeException(exc);
+            } finally {
+                if (input != null) {
+                    try {
+                        input.close();
+                    } catch (IOException ex) {
+                        dialogueMessage("erreur de lecture dans le fichier de conf");
+                    }
+                }
+            }
+            try {
+                socket = new Socket(ipServeur, port);
+                oos = new ObjectOutputStream(socket.getOutputStream());
+                ois = new ObjectInputStream(socket.getInputStream());
+                isInitialized = true; // Marquer comme initialisé
+            } catch (IOException ex) {
+                throw new RuntimeException(ex);
+            }
+        }
+    }
+    @Override
+    public void keyPressed(KeyEvent e) {
+        int key = e.getKeyCode();
+        System.out.println("touche : " + key);
+        if (key == KeyEvent.VK_MINUS) {  // Touche "-"
+//            initializeObjectStreams();
+//            System.out.println("Touche '-' appuyée.");
+//
+//
+            creerButton.setVisible(true);
+        }
+    }
+    @Override
+    public void keyTyped(KeyEvent e) {
+        // Ne rien faire (corps vide) ou lancer une exception non prise en charge
 
+    }
+
+    @Override
+    public void keyReleased(KeyEvent e) {
+        // Code à exécuter lorsque qu'une touche est relâchée
+    }
 
 
     public void dialogueMessage(String message) {
         System.out.println("dialog");
         JOptionPane.showMessageDialog(this, message);
     }
-
-    public static void afficherFactures(List<Facture> factures) {
-        for (Facture facture : factures) {
-            System.out.println("ID : " + facture.getId());
-            System.out.println("ID du client : " + facture.getIdClient());
-            System.out.println("Date : " + facture.getDate());
-            System.out.println("Montant : " + facture.getMontant());
-            System.out.println("Payée : " + facture.isPaye());
-            System.out.println();
-        }
-    }
-
-    public static void afficherCaddie(List<Caddie> caddies) {
-        for (Caddie caddie : caddies) {
-            System.out.println("quantite : " + caddie.getQuantite());
-            System.out.println("intitule : " + caddie.getIntitule());
-            System.out.println("image : " + caddie.getImage());
-            System.out.println();
-        }
-    }
-
-
     public ClientPaiement() {
-        DefaultTableModel model = new DefaultTableModel();
+        creerButton.setVisible(false);
+        DefaultTableModel model = new DefaultTableModel() {
+            @Override
+            public boolean isCellEditable(int row, int column) {
+                // Rendre toutes les cellules non modifiables
+                return false;
+            }
+        };
         model.addColumn("idFacture");
         model.addColumn("date");
         model.addColumn("montant");
         model.addColumn("payé");
+        rechercherButton.setEnabled(false);
+        logoutButton.setEnabled(false);
+        payerButton.setEnabled(false);
 
         table1.setModel(model);
         table1.setAutoResizeMode(JTable.AUTO_RESIZE_ALL_COLUMNS);
-
-
+        this.addKeyListener(this);
+        this.setFocusable(true);
+        this.requestFocusInWindow();
         loginButton.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
-                Properties properties = new Properties();
-                FileInputStream input = null;
-                int port = 0;
-                String ipServeur;
-                try {
-                    input = new FileInputStream("C:\\Users\\ateli\\OneDrive\\Documents\\cours_superieur\\B3\\RTI\\labo\\partie paiement\\ClientPaiement\\src\\config.properties");
-                    properties.load(input);
-                    port = Integer.parseInt(properties.getProperty("PORT_PAIEMENT"));
-                    ipServeur = properties.getProperty(("IP_SERVEUR"));
-                } catch (IOException exc) {
-                    throw new RuntimeException(exc);
-                } finally {
-                    if (input != null) {
-                        try {
-                            input.close();
-                        } catch (IOException ex) {
-                            dialogueMessage("erreur de lecture dans le fichier de conf");
-                        }
-                    }
-                }
-                try {
-                    socket = new Socket(ipServeur, port);
-                } catch (IOException ex) {
-                    throw new RuntimeException(ex);
-                }
 
-                try {
-                    oos = new ObjectOutputStream(socket.getOutputStream());
-                    ois = new ObjectInputStream(socket.getInputStream());
-                } catch (IOException ex) {
-                    throw new RuntimeException(ex);
-                }
+                initializeObjectStreams();
                 String login1 = jTextFieldLogin.getText();
                 String password = jTextFieldPassword.getText();
                 System.out.println("login " + login1 + " mdp " + password);
                 try {
 
-                    RequeteLogin requete = new RequeteLogin(login1, password);
+                    RequeteLogin requete = new RequeteLogin(login1, password,false);
 
                     oos.writeObject(requete);
                     System.out.println("est passé dans le login requete" + requete);
@@ -125,11 +143,11 @@ public class ClientPaiement extends JFrame {
                     if (reponse.isValide()) {
                         loginButton.setEnabled(false);
                         logoutButton.setEnabled(true);
+                        rechercherButton.setEnabled(true);
+
                         dialogueMessage("connecté");
-                        // jButtonCalcul.setEnabled(true);
-                        // this.login = login;
                     } else {
-                        //JOptionPane.showMessageDialog(this,"Erreur de login!","Erreur...",JOptionPane.ERROR_MESSAGE);
+                       dialogueMessage("probleme lors de la tentative de connection");
                         socket.close();
 
                     }
@@ -148,18 +166,23 @@ public class ClientPaiement extends JFrame {
 
                     System.out.println("la requete de logout :" + requete);
                     oos.writeObject(requete);
-                    //Requete test = (Requete) ois.readObject();
-                    //System.out.println("la requete de logout :"+test);
+                    socket.close();
+                    oos.close();
+                    ois.close();
 
-
-                    loginButton.setEnabled(true);
-                    logoutButton.setEnabled(false);
                 } catch (IOException ex) {
                     throw new RuntimeException(ex);
                 }
-                //oos.close();
-                //ois.close();
-                // socket.close();
+                isInitialized=false;
+                loginButton.setEnabled(true);
+                logoutButton.setEnabled(false);
+                rechercherButton.setEnabled(false);
+                payerButton.setEnabled(false);
+                jTextFieldLogin.setText("");
+                jTextFieldPassword.setText("");
+                numClient.setText("");
+                model.setRowCount(0);
+
 
             }
         });
@@ -216,8 +239,6 @@ public class ClientPaiement extends JFrame {
                             dialogueMessage("Facture payée");
                         } else
                             dialogueMessage("Probleme lors du paiement de la facture");
-
-                        //afficherFactures(reponse.getFacture());
                     } catch (IOException ex) {
                         throw new RuntimeException(ex);
                     } catch (ClassNotFoundException ex) {
@@ -230,6 +251,7 @@ public class ClientPaiement extends JFrame {
         table1.getSelectionModel().addListSelectionListener(new ListSelectionListener() {
             public void valueChanged(ListSelectionEvent event) {
                 if (!event.getValueIsAdjusting() && table1.getSelectedRow() != -1) {
+                    payerButton.setEnabled(true);
                     int selectedRow = table1.getSelectedRow();
                     String info = model.getValueAt(selectedRow, 0).toString();
                     RequeteCaddie requete = new RequeteCaddie(info);
@@ -240,13 +262,10 @@ public class ClientPaiement extends JFrame {
                         ReponseCaddie reponse1 = (ReponseCaddie) ois.readObject();
 
                         System.out.println("Affichage des résultats : ");
-
-                        // Mettez à jour le contenu de l'interface existante
                         interfaceCaddie.updateCaddie(reponse1.getCaddieList());
 
                         if (!isInterfaceOpen) {
-                            // Ouvrez l'interface graphique si ce n'est pas encore ouvert
-                            interfaceCaddie.setVisible(true);
+                           interfaceCaddie.setVisible(true);
                             isInterfaceOpen = true;
                         }
                     } catch (IOException ex) {
@@ -259,24 +278,50 @@ public class ClientPaiement extends JFrame {
         });
 
 
+        creerButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                try {
+                    initializeObjectStreams();
+                    System.out.println("login : "+jTextFieldLogin.getText()+" mdp : "+jTextFieldPassword.getText());
+                    RequeteLogin requete = new RequeteLogin(jTextFieldLogin.getText(), jTextFieldPassword.getText(), true);
 
+                    oos.writeObject(requete);
+                    System.out.println("est passé dans le login requete" + requete);
+                    ReponseLogin reponse = (ReponseLogin) ois.readObject();
+                    System.out.println("est passé dans le login après lecture");
+                    if (reponse.isValide()) {
+                        loginButton.setEnabled(false);
+                        logoutButton.setEnabled(true);
+                        dialogueMessage("connecté");
+                        // jButtonCalcul.setEnabled(true);
+                        // this.login = login;
+                    } else {
+                        //JOptionPane.showMessageDialog(this,"Erreur de login!","Erreur...",JOptionPane.ERROR_MESSAGE);
+                        socket.close();
 
-
+                    }
+                } catch (IOException | ClassNotFoundException ex) {
+                    //JOptionPane.showMessageDialog(this,"Problème de connexion!","Erreur...",JOptionPane.ERROR_MESSAGE);
+                }
+            }
+        });
     }
 
     public static void main(String[] args) {
-
         SwingUtilities.invokeLater(() -> {
+            ClientPaiement app = new ClientPaiement();
             JFrame frame = new JFrame("Maraicher en ligne");
             frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-            ClientPaiement app = null;
-            app = new ClientPaiement();
-
-            frame.setSize(850, 250);  //onpeut mettre un listener
-            //Nous demandons maintenant à notre objet de se positionner au centre
-            frame.setLocationRelativeTo(null);
             frame.add(app.panel1);
-            //frame.pack();
+            frame.setSize(850, 250);
+            frame.setLocationRelativeTo(null);
+
+            // Ajoutez ces lignes pour activer le focus clavier
+            frame.addKeyListener(app);
+            frame.setFocusable(true);
+            frame.requestFocusInWindow();
+
             frame.setVisible(true);
         });
     }
