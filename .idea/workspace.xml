@@ -10,7 +10,6 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="e3cb2a94-a499-4cdc-a26e-72dbbe563d21" name="Changes" comment="clique sur croix pas encore fait">
-      <change afterPath="$PROJECT_DIR$/src/OVESP/ReponseLogout.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/ClientPaiement.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/ClientPaiement.java" afterDir="false" />
     </list>
@@ -116,7 +115,8 @@
       <workItem from="1698137714983" duration="13997000" />
       <workItem from="1698486331628" duration="381000" />
       <workItem from="1698486820775" duration="130000" />
-      <workItem from="1698487079117" duration="111000" />
+      <workItem from="1698487079117" duration="133000" />
+      <workItem from="1698489729912" duration="121000" />
     </task>
     <task id="LOCAL-00001" summary="Jtable degueu">
       <option name="closed" value="true" />
@@ -222,7 +222,15 @@
       <option name="project" value="LOCAL" />
       <updated>1698486942444</updated>
     </task>
-    <option name="localTasksCounter" value="14" />
+    <task id="LOCAL-00014" summary="clique sur croix pas encore fait">
+      <option name="closed" value="true" />
+      <created>1698487206676</created>
+      <option name="number" value="00014" />
+      <option name="presentableId" value="LOCAL-00014" />
+      <option name="project" value="LOCAL" />
+      <updated>1698487206676</updated>
+    </task>
+    <option name="localTasksCounter" value="15" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
