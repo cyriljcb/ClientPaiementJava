@@ -162,11 +162,15 @@ public class ClientPaiement extends JFrame implements KeyListener {
                 try {
                     System.out.println("la requete de logout :" + requete);
                     oos.writeObject(requete);
+                    ReponseLogout reponse = (ReponseLogout) ois.readObject();
+                    //TODO manque le receive
                     socket.close();
                     oos.close();
                     ois.close();
 
                 } catch (IOException ex) {
+                    throw new RuntimeException(ex);
+                } catch (ClassNotFoundException ex) {
                     throw new RuntimeException(ex);
                 }
                 isInitialized = false;
