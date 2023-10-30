@@ -9,9 +9,22 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="e3cb2a94-a499-4cdc-a26e-72dbbe563d21" name="Changes" comment="clique sur croix pas encore fait">
+    <list default="true" id="e3cb2a94-a499-4cdc-a26e-72dbbe563d21" name="Changes" comment="clique sur croix fait">
+      <change afterPath="$PROJECT_DIR$/src/Controllers/Controller.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/Controllers/CreerController.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/Controllers/LoginController.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/Controllers/LogoutController.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/Controllers/PayerController.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/Controllers/RechercherController.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/Controllers/TableClickListener.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/Models/Model.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/Models/ModelObserver.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/View/ClientPaiement.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/ClientPaiement.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/ClientPaiement.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/ClientPaiement.form" beforeDir="false" afterPath="$PROJECT_DIR$/src/View/ClientPaiement.form" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/ClientPaiement.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/META-INF/MANIFEST.MF" beforeDir="false" afterPath="$PROJECT_DIR$/src/META-INF/MANIFEST.MF" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Main.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -35,34 +48,35 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent">{
-  &quot;keyToString&quot;: {
-    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
-    &quot;SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;,
-    &quot;UI_DESIGNER_EDITOR_MODE.PaletteManager.SHOW&quot;: &quot;true&quot;,
-    &quot;UI_DESIGNER_EDITOR_MODE.UIDesignerToolWindowManager.SHOW&quot;: &quot;true&quot;,
-    &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
-    &quot;dart.analysis.tool.window.visible&quot;: &quot;false&quot;,
-    &quot;last_opened_file_path&quot;: &quot;C:/Users/ateli/OneDrive/Documents/cours_superieur/B3/RTI/labo/partie paiement/ClientPaiement&quot;,
-    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
-    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
-    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
-    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
-    &quot;project.structure.last.edited&quot;: &quot;Artifacts&quot;,
-    &quot;project.structure.proportion&quot;: &quot;0.15&quot;,
-    &quot;project.structure.side.proportion&quot;: &quot;0.2&quot;,
-    &quot;settings.editor.selected.configurable&quot;: &quot;preferences.general&quot;,
-    &quot;show.migrate.to.gradle.popup&quot;: &quot;false&quot;,
-    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "RunOnceActivity.OpenProjectViewOnStart": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "SHARE_PROJECT_CONFIGURATION_FILES": "true",
+    "UI_DESIGNER_EDITOR_MODE.PaletteManager.SHOW": "true",
+    "UI_DESIGNER_EDITOR_MODE.UIDesignerToolWindowManager.SHOW": "true",
+    "WebServerToolWindowFactoryState": "false",
+    "dart.analysis.tool.window.visible": "false",
+    "last_opened_file_path": "C:/Users/ateli/OneDrive/Documents/cours_superieur/B3/RTI/labo/partie paiement/ClientPaiement/src",
+    "node.js.detected.package.eslint": "true",
+    "node.js.detected.package.tslint": "true",
+    "node.js.selected.package.eslint": "(autodetect)",
+    "node.js.selected.package.tslint": "(autodetect)",
+    "project.structure.last.edited": "Artifacts",
+    "project.structure.proportion": "0.15",
+    "project.structure.side.proportion": "0.2",
+    "settings.editor.selected.configurable": "preferences.general",
+    "show.migrate.to.gradle.popup": "false",
+    "vue.rearranger.settings.migration": "true"
   }
-}</component>
+}]]></component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
       <recent name="C:\Users\ateli\OneDrive\Documents\cours_superieur\B3\RTI\labo\partie paiement\ClientPaiement\src" />
       <recent name="C:\Users\ateli\OneDrive\Documents\cours supérieur\B3\RTI\labo\partie paiement\ClientPaiement\src" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\Users\ateli\OneDrive\Documents\cours_superieur\B3\RTI\labo\partie paiement\ClientPaiement\src\View" />
       <recent name="C:\Users\ateli\OneDrive\Documents\cours_superieur\B3\RTI\labo\partie paiement\ClientPaiement\src" />
     </key>
     <key name="CopyClassDialog.RECENTS_KEY">
@@ -70,8 +84,8 @@
     </key>
   </component>
   <component name="RunManager">
-    <configuration name="ClientPaiement" type="Application" factoryName="Application" singleton="false" temporary="true" nameIsGenerated="true">
-      <option name="MAIN_CLASS_NAME" value="ClientPaiement" />
+    <configuration name="Main" type="Application" factoryName="Application" singleton="false" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="Main" />
       <module name="ClientPaiement" />
       <method v="2">
         <option name="Make" enabled="true" />
@@ -79,7 +93,7 @@
     </configuration>
     <recent_temporary>
       <list>
-        <item itemvalue="Application.ClientPaiement" />
+        <item itemvalue="Application.Main" />
       </list>
     </recent_temporary>
   </component>
@@ -116,7 +130,8 @@
       <workItem from="1698486331628" duration="381000" />
       <workItem from="1698486820775" duration="130000" />
       <workItem from="1698487079117" duration="133000" />
-      <workItem from="1698489729912" duration="121000" />
+      <workItem from="1698489729912" duration="150000" />
+      <workItem from="1698669547972" duration="1078000" />
     </task>
     <task id="LOCAL-00001" summary="Jtable degueu">
       <option name="closed" value="true" />
@@ -230,7 +245,15 @@
       <option name="project" value="LOCAL" />
       <updated>1698487206676</updated>
     </task>
-    <option name="localTasksCounter" value="15" />
+    <task id="LOCAL-00015" summary="clique sur croix fait">
+      <option name="closed" value="true" />
+      <created>1698490903334</created>
+      <option name="number" value="00015" />
+      <option name="presentableId" value="LOCAL-00015" />
+      <option name="project" value="LOCAL" />
+      <updated>1698490903334</updated>
+    </task>
+    <option name="localTasksCounter" value="16" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -249,6 +272,7 @@
     <MESSAGE value="logout fait, bouton cacher fait&#10;manque: l'interface du serveur et blindage" />
     <MESSAGE value="tout fait sauf l'interface" />
     <MESSAGE value="clique sur croix pas encore fait" />
-    <option name="LAST_COMMIT_MESSAGE" value="clique sur croix pas encore fait" />
+    <MESSAGE value="clique sur croix fait" />
+    <option name="LAST_COMMIT_MESSAGE" value="clique sur croix fait" />
   </component>
 </project>
