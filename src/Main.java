@@ -10,12 +10,9 @@ import static java.lang.System.exit;
 
 public class Main {
     public static void main(String[] args) {
-        Model model = new Model(); // Créez une instance du modèle
-        ClientPaiement view = new ClientPaiement(); // Créez une instance de la vue
-        Controller controller = new Controller(model, view); // Créez une instance du contrôleur
-        //view.addWindowCloseListener(controller);
-
-        // Mettez en place la vue dans la fenêtre principale
+        Model model = new Model();
+        ClientPaiement view = new ClientPaiement();
+        Controller controller = new Controller(model, view);
         JFrame frame = new JFrame("Maraicher en ligne");
         frame.add(view.getPanel_principal());
         frame.pack();
