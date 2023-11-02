@@ -18,13 +18,17 @@ public class TableClickListener implements MouseListener {
 
     @Override
     public void mouseClicked(MouseEvent e) {
-        int Row = view.getFactureTable().getSelectedRow();
-        DefaultTableModel model1 = (DefaultTableModel) view.getFactureTable().getModel();
-        String info = model1.getValueAt(Row, 0).toString();
-            model.caddie(info);
-            view.updateViewTable(model);
-
+        if (view.isTestTable()) {
+            int row = view.getFactureTable().getSelectedRow();
+            if (row != -1) { // Vérifiez d'abord si une ligne est sélectionnée
+                DefaultTableModel model1 = (DefaultTableModel) view.getFactureTable().getModel();
+                String info = model1.getValueAt(row, 0).toString();
+                model.caddie(info);
+                view.updateViewTable(model);
+            }
+        }
     }
+
 
     @Override
     public void mousePressed(MouseEvent e) {
@@ -48,4 +52,3 @@ public class TableClickListener implements MouseListener {
 
     // Autres méthodes de l'interface MouseListener à implémenter
 }
-

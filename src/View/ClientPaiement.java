@@ -1,6 +1,7 @@
 package View;
 
 import Classe.*;
+import Controllers.TableClickListener;
 import Models.Model;
 import Models.ModelObserver;
 
@@ -29,16 +30,22 @@ public class ClientPaiement extends JFrame implements KeyListener, ModelObserver
     private JTable table2;
     private JScrollPane JScrollPane2;
     private JLabel JLabelPanier;
-    private boolean isInterfaceOpen = false;
     private DefaultTableModel tabModel ;
     private DefaultTableModel tabModel1;
     private JFrame mainWindow;
+    private boolean testTable = false;
 
     private int desiredFrameWidth = 850;
+
     public void addFactureClickListener(MouseListener listener) {
+
         table1.addMouseListener(listener);
     }
+    public boolean isTestTable()
+    {
+        return testTable;
 
+    }
     @Override
     public void keyPressed(KeyEvent e) {
         int key = e.getKeyCode();
@@ -65,7 +72,7 @@ public class ClientPaiement extends JFrame implements KeyListener, ModelObserver
     public ClientPaiement() {
         creerButton.setVisible(false);
         tabModel = new DefaultTableModel();
-       tabModel = new DefaultTableModel() {
+        tabModel = new DefaultTableModel() {
             @Override
             public boolean isCellEditable(int row, int column) {
                 // Rendre toutes les cellules non modifiables
@@ -103,6 +110,9 @@ public class ClientPaiement extends JFrame implements KeyListener, ModelObserver
         rechercherButton.setEnabled(false);
         logoutButton.setEnabled(false);
         payerButton.setEnabled(false);
+        table2.setEnabled(false);
+
+
         panel1.setSize(1000,1000);
 
         this.addKeyListener(this);
@@ -151,6 +161,8 @@ public class ClientPaiement extends JFrame implements KeyListener, ModelObserver
     @Override
     public void updateViewRechercher(Model model) {
         tabModel.setRowCount(0);
+        testTable = true;
+
         for (Facture facture : model.getFactures()) {
             Object[] rowData = {facture.getId(), facture.getDate(), facture.getMontant(), facture.isPaye()};
             tabModel.addRow(rowData);
@@ -209,6 +221,7 @@ public class ClientPaiement extends JFrame implements KeyListener, ModelObserver
         tabModel1.setRowCount(0);
         JScrollPane2.setVisible(false);
         JLabelPanier.setVisible(false);
+        testTable = false;
         mainWindow.setSize(desiredFrameWidth, 250);
     }
     public void addLoginListener(ActionListener listener){
