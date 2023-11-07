@@ -1,4 +1,4 @@
-package OVESP;
+package VESPAP;
 
 public class FinConnexionException extends Exception {
     private ReponseLogin reponse;

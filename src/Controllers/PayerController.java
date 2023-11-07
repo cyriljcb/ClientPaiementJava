@@ -21,12 +21,20 @@ public class PayerController implements ActionListener {
         int Row = view.getFactureTable().getSelectedRow();
         DefaultTableModel model1 = (DefaultTableModel) view.getFactureTable().getModel();
         String info = model1.getValueAt(Row, 0).toString();
+        boolean paye = (boolean) model1.getValueAt(Row, 3);
         String nom = view.getNomVisa();
         String numVisa = view.getNumVisa();
-        if(model.payer(nom,numVisa,Row,info))
-            view.updateViewPayer(model);
+        if(!paye)
+        {
+            if(model.payer(nom,numVisa,Row,info))
+                view.updateViewPayer(model);
+            else
+                view.updateViewMessage(model);
+        }
         else
-            view.updateViewMessage(model);
+        {
+            view.updateViewMessage("la facture n'est plus a payer");
+        }
 
     }
 }

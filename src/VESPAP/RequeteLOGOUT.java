@@ -1,4 +1,4 @@
-package OVESP;
+package VESPAP;
 
 public class RequeteLOGOUT implements Requete {
     private String login;

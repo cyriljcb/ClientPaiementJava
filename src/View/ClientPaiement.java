@@ -8,6 +8,7 @@ import Models.ModelObserver;
 import javax.swing.*;
 import javax.swing.table.DefaultTableModel;
 import javax.swing.table.JTableHeader;
+import javax.swing.text.AbstractDocument;
 import java.awt.*;
 import java.awt.event.ActionListener;
 import java.awt.event.KeyEvent;
@@ -29,12 +30,13 @@ public class ClientPaiement extends JFrame implements KeyListener, ModelObserver
     private JButton creerButton;
     private JTable table2;
     private JScrollPane JScrollPane2;
+    private JScrollPane JScrollPane1;
     private JLabel JLabelPanier;
     private DefaultTableModel tabModel ;
     private DefaultTableModel tabModel1;
     private JFrame mainWindow;
     private boolean testTable = false;
-
+    int maxLength = 20;
     private int desiredFrameWidth = 850;
 
     public void addFactureClickListener(MouseListener listener) {
@@ -111,7 +113,21 @@ public class ClientPaiement extends JFrame implements KeyListener, ModelObserver
         logoutButton.setEnabled(false);
         payerButton.setEnabled(false);
         table2.setEnabled(false);
+        numClient.setEnabled(false);
+        nomVisa.setEnabled(false);
+        NumVisa.setEnabled(false);
 
+        AbstractDocument document = (AbstractDocument) jTextFieldLogin.getDocument();
+        document.setDocumentFilter(new MaxLengthDocumentFilter(maxLength));
+
+        AbstractDocument document1 = (AbstractDocument) jTextFieldPassword.getDocument();
+        document1.setDocumentFilter(new MaxLengthDocumentFilter(maxLength));
+        AbstractDocument document2 = (AbstractDocument) numClient.getDocument();
+        document2.setDocumentFilter(new MaxLengthDocumentFilter(maxLength));
+        AbstractDocument document3 = (AbstractDocument) nomVisa.getDocument();
+        document3.setDocumentFilter(new MaxLengthDocumentFilter(maxLength));
+        AbstractDocument document4 = (AbstractDocument) NumVisa.getDocument();
+        document4.setDocumentFilter(new MaxLengthDocumentFilter(maxLength));
 
         panel1.setSize(1000,1000);
 
@@ -155,11 +171,19 @@ public class ClientPaiement extends JFrame implements KeyListener, ModelObserver
         dialogueMessage(model.getMessage());
         loginButton.setEnabled(false);
         creerButton.setEnabled(false);
+        jTextFieldLogin.setEnabled(false);
+        jTextFieldPassword.setEnabled(false);
         logoutButton.setEnabled(true);
         rechercherButton.setEnabled(true);
+        numClient.setEnabled(true);
     }
     @Override
     public void updateViewRechercher(Model model) {
+
+        JScrollPane2.setVisible(false);
+        JLabelPanier.setVisible(false);
+        testTable = false;
+        mainWindow.setSize(desiredFrameWidth, 250);
         tabModel.setRowCount(0);
         testTable = true;
 
@@ -184,16 +208,14 @@ public class ClientPaiement extends JFrame implements KeyListener, ModelObserver
         }
         nomVisa.setText("");
         NumVisa.setText("");
-        tabModel1.setRowCount(0);
-        JScrollPane2.setVisible(false);
-        JLabelPanier.setVisible(false);
-        mainWindow.setSize(desiredFrameWidth, 250);
     }
     public void updateViewTable(Model model) {
         mainWindow.setSize(desiredFrameWidth, 500);
         payerButton.setEnabled(true);
         JScrollPane2.setVisible(true);
         JLabelPanier.setVisible(true);
+        nomVisa.setEnabled(true);
+        NumVisa.setEnabled(true);
         tabModel1.setRowCount(0);
         for (Caddie caddie : model.getCaddie1()) {
             String imagePath = "src\\images\\" + caddie.getImage();
@@ -203,6 +225,10 @@ public class ClientPaiement extends JFrame implements KeyListener, ModelObserver
         tabModel1.fireTableDataChanged();
 
         pack(); // Réorganiser la fenêtre principale pour prendre en compte les modifications de la JTable
+    }
+    public void updateViewMessage(String msg)
+    {
+        dialogueMessage(msg);
     }
 
 
@@ -223,6 +249,9 @@ public class ClientPaiement extends JFrame implements KeyListener, ModelObserver
         JLabelPanier.setVisible(false);
         testTable = false;
         mainWindow.setSize(desiredFrameWidth, 250);
+        jTextFieldLogin.setEnabled(true);
+        jTextFieldPassword.setEnabled(true);
+        numClient.setEnabled(false);
     }
     public void addLoginListener(ActionListener listener){
         loginButton.addActionListener(listener);

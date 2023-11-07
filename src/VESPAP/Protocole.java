@@ -1,4 +1,4 @@
-package OVESP;
+package VESPAP;
 import java.net.Socket;
 
 public interface Protocole {

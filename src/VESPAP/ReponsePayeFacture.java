@@ -1,8 +1,4 @@
-package OVESP;
-
-import Classe.Facture;
-
-import java.util.List;
+package VESPAP;
 
 public class ReponsePayeFacture implements Reponse{
     private boolean paye;

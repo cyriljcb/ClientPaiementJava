@@ -1,16 +1,16 @@
-package OVESP;
+package VESPAP;
 
 import java.net.Socket;
 import java.util.HashMap;
 
-public class OVESP implements Protocole {
+public class VESPAP implements Protocole {
     private HashMap<String, String> passwords;
     private HashMap<String, Socket> clientsConnectes;
     private HashMap<Integer,String> idClientConnectes;
 
     private Logger logger;
 
-    public OVESP(Logger log) {
+    public VESPAP(Logger log) {
         passwords = new HashMap<>();
         passwords.put("wagner", "abcd");
         passwords.put("charlet", "1234");
@@ -24,7 +24,7 @@ public class OVESP implements Protocole {
 
     @Override
     public String getNom() {
-        return "OVESP";
+        return "VESPAP";
     }
 
     @Override

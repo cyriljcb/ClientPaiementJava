@@ -9,7 +9,12 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="e3cb2a94-a499-4cdc-a26e-72dbbe563d21" name="Changes" comment="MVC fini" />
+    <list default="true" id="e3cb2a94-a499-4cdc-a26e-72dbbe563d21" name="Changes" comment="probleme avec la jtable résolu">
+      <change afterPath="$PROJECT_DIR$/src/Classe/MaxLengthDocumentFilter.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Controllers/PayerController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Controllers/PayerController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/View/ClientPaiement.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/View/ClientPaiement.java" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -26,11 +31,11 @@
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
-  <component name="GitHubPullRequestSearchHistory"><![CDATA[{
-  "lastFilter": {
-    "state": "OPEN"
+  <component name="GitHubPullRequestSearchHistory">{
+  &quot;lastFilter&quot;: {
+    &quot;state&quot;: &quot;OPEN&quot;
   }
-}]]></component>
+}</component>
   <component name="GithubPullRequestsUISettings">
     <option name="selectedUrlAndAccountId">
       <UrlAndAccount>
@@ -54,7 +59,7 @@
     "UI_DESIGNER_EDITOR_MODE.UIDesignerToolWindowManager.SHOW": "true",
     "WebServerToolWindowFactoryState": "false",
     "dart.analysis.tool.window.visible": "false",
-    "last_opened_file_path": "C:/Users/ateli/OneDrive/Documents/cours_superieur/B3/RTI/labo/partie paiement/ClientPaiement",
+    "last_opened_file_path": "C:/Users/ateli/OneDrive/Documents/cours_superieur/B3/RTI/labo/clone_serveur",
     "node.js.detected.package.eslint": "true",
     "node.js.detected.package.tslint": "true",
     "node.js.selected.package.eslint": "(autodetect)",
@@ -77,6 +82,7 @@
       <recent name="C:\Users\ateli\OneDrive\Documents\cours_superieur\B3\RTI\labo\partie paiement\ClientPaiement\src" />
     </key>
     <key name="CopyClassDialog.RECENTS_KEY">
+      <recent name="Classe" />
       <recent name="OVESP" />
     </key>
   </component>
@@ -130,6 +136,8 @@
       <workItem from="1698489729912" duration="150000" />
       <workItem from="1698669547972" duration="1265000" />
       <workItem from="1698738527204" duration="199000" />
+      <workItem from="1698949683732" duration="159000" />
+      <workItem from="1699135720699" duration="864000" />
     </task>
     <task id="LOCAL-00001" summary="Jtable degueu">
       <option name="closed" value="true" />
@@ -275,7 +283,15 @@
       <option name="project" value="LOCAL" />
       <updated>1698738714857</updated>
     </task>
-    <option name="localTasksCounter" value="19" />
+    <task id="LOCAL-00019" summary="probleme avec la jtable résolu">
+      <option name="closed" value="true" />
+      <created>1698949809962</created>
+      <option name="number" value="00019" />
+      <option name="presentableId" value="LOCAL-00019" />
+      <option name="project" value="LOCAL" />
+      <updated>1698949809962</updated>
+    </task>
+    <option name="localTasksCounter" value="20" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -296,6 +312,7 @@
     <MESSAGE value="clique sur croix pas encore fait" />
     <MESSAGE value="clique sur croix fait" />
     <MESSAGE value="MVC fini" />
-    <option name="LAST_COMMIT_MESSAGE" value="MVC fini" />
+    <MESSAGE value="probleme avec la jtable résolu" />
+    <option name="LAST_COMMIT_MESSAGE" value="probleme avec la jtable résolu" />
   </component>
 </project>
